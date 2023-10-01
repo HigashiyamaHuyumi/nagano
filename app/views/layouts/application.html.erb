@@ -11,6 +11,65 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+        <div class="container">
+          <div class="navbar-brand" href="/">
+            <%= link_to "home", root_path, style: "font-size: 2rem;" %>
+          </div>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+  
+              <% if customer_signed_in? %> <!--ログインしているときの表示-->
+                <li class="nav-item">
+                  <%= link_to destroy_customer_session_path, method: :delete , class: "nav-link text-white" do %>
+                    <i class="fas fa-sign-out-alt"></i> Log out
+                  <% end %>
+                </li> <!--ログアウト-->
+  
+              <% else %><!--ログアウトしているときの表示-->
+                <li class="nav-item">
+                  <%= link_to root_path , class: "nav-link text-white" do %>
+                    Home
+                  <% end %>
+                </li> <!--home-->
+  
+                <li class="nav-item">
+                  <%= link_to home_about_path , class: "nav-link text-white" do %>
+                    <i class="fas fa-link"></i> About
+                  <% end %>
+                </li> <!--about-->
+  
+                <li class="nav-item">
+                  <%= link_to new_customer_registration_path , class: "nav-link text-white" do%>
+                    <i class="fas fa-user-plus"></i> Sign up
+                  <% end %>
+                </li> <!--sign up-->
+  
+                <li class="nav-item">
+                  <%= link_to new_customer_session_path , class: "nav-link text-white" do %>
+                    <i class="fas fa-sign-in-alt"></i> Log in
+                  <% end %>
+                </li> <!--log in-->
+  
+              <% end %>
+  
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+  
+    <%= flash[:notice] %>
+    
+    
+    
     <%= yield %>
   </body>
 </html>

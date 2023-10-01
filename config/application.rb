@@ -18,5 +18,8 @@ module Nagano
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Uncomment the following line to enable all parameters to be permitted by default:
+    config.action_controller.permit_all_parameters = true
   end
 end
